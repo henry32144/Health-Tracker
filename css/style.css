@@ -1,0 +1,126 @@
+/*Top nav bar*/
+.site-header {
+	text-align: center;
+	position: relative;
+	background-color: #16a753;
+	color : #fff;
+	margin-bottom: 0;
+}
+
+.site-header a {
+	color: #eee;
+}
+
+.site-header .navbar-header span {
+	background-color: #fff;
+}
+
+/*Big title and search bar*/
+.site-header .jumbotron {
+	background-color: #16a753;
+	font-size: 36px;
+}
+
+.site-header .jumbotron p {
+	color: #f1efef;
+	margin-bottom: 20px;
+}
+
+.site-header .search-wrapper {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 680px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+.site-header .form-group {
+    position: relative;
+}
+
+.site-header .form-group span{
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    color: #a3a3a4;
+}
+
+.site-header #search-bar {
+    font-size: 16px;
+    padding: 13px 30px;
+    border-radius: 0;
+    height: auto;
+    text-align: center;
+    border-color: transparent;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.search-list {
+	font-size: large;
+	width: inherit;
+	position: absolute;
+    padding-left: 15px;
+    padding-right: 15px;
+    text-align: left;
+    left: 0px;
+    color: #333;
+    display: none;
+}
+
+.search-list .list-group-item {
+	overflow : hidden;
+	text-overflow : ellipsis;
+	color: #333;
+
+}
+
+/*Main content area*/
+.list-content {
+	margin-top: 50px;
+	margin-bottom: 50px;
+}
+.list-content .list-group-item {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+/*foot navbar*/
+.footer .navbar {
+    background-color: #27ae60;
+    color: #fff;
+}
+
+/*little component*/
+#message-area {
+	font-size: 18px;
+	font-weight: bold;
+}
+
+.food-text {
+	font-size: 18px;
+	font-weight: bold;
+}
+
+.btn-primary-outline {
+  background-color: transparent;
+  border-color: #ccc;
+}
+
+/*media query when screen is larger than 768px*/
+@media screen and (min-width: 768px) {
+	.site-header h1 {
+		font-size: 56px;
+		text-shadow: -5px 5px 0 rgba(0,0,0,.1);
+	}
+
+	#message-area > p {
+		font-size: 24px;
+	}
+
+	.food-text {
+		font-size: 24px;
+	}
+}
