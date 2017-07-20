@@ -58,7 +58,7 @@
     margin-bottom: 15px;
 }
 
-.search-list {
+#search-list {
 	font-size: large;
 	width: inherit;
 	position: absolute;
@@ -67,10 +67,10 @@
     text-align: left;
     left: 0px;
     color: #333;
-    display: none;
+
 }
 
-.search-list .list-group-item {
+#search-list .list-group-item {
 	overflow : hidden;
 	text-overflow : ellipsis;
 	color: #333;
