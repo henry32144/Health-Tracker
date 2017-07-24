@@ -41,7 +41,6 @@ app.SearchListView = Backbone.View.extend({
         	calories: cal
         };
 
-        FoodListView.foodlist(foodData);
-
+        app.trigger("clickedResult" , foodData);
 	},
 });

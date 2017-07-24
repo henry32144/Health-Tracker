@@ -16,7 +16,7 @@ app.FoodView = Backbone.View.extend({
 	},
 
 	deleteFood: function() {
-		this.model.destory();
+		//this.model.destory();
 		this.remove();
 	},
 });

@@ -4,9 +4,14 @@ app.FoodListView = Backbone.View.extend({
 
 	el: '#foods',
 
+
 	initialize: function(initialFoods) {
+		_.bindAll(this, "addtoFoodList");
 		this.collection = new app.FoodList(initialFoods);
+		app.on('clickedResult' , this.addtoFoodList);
 		this.render();
+
+		this.listenTo(this.collection, 'add', this.renderFood)
 	},
 
 	render: function() {
@@ -16,13 +21,17 @@ app.FoodListView = Backbone.View.extend({
 	},
 
 	renderFood: function(item) {
+		console.log(this.collection);
 		var FoodView = new app.FoodView({
 			model: item
 		});
 		this.$el.append(FoodView.render().el);
 	},
 
-    addFoodtoList: function(foodData) {
-        this.collection.add(foodData);
+	addtoFoodList: function(item) {
+		this.collection.add(item);
+		console.log(item);
+		console.log(this.collection);
 	},
+
 });

@@ -1,4 +1,5 @@
 var app = app || {};
+_.extend(app, Backbone.Events);
 
 $(function() {
 	var foods = [
@@ -14,6 +15,7 @@ $(function() {
 	];
     new app.FoodListView(foods);
     new app.SearchListView(search);
+
     var apiUrl = 'https://api.nutritionix.com/v1_1/search/';
     var secondPart = '?results=0%3A1&fields=item_name%2Citem_id%2Cbrand_name%2Cnf_calories%2Cnf_total_fat&appId=5801a68a&appKey=c55ded6d8f4a00ff80570dcbb659b1a3';
 });
