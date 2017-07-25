@@ -8,6 +8,7 @@ app.SearchView = Backbone.View.extend({
 
 	render: function() {
 	    this.$el.html(this.template(this.model.attributes));
+	    this.$el.children().attr("data-id" , this.model.get("result"));
 	    return this;
 	},
 

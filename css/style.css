@@ -67,7 +67,6 @@
     text-align: left;
     left: 0px;
     color: #333;
-
 }
 
 #search-list .list-group-item {
@@ -107,6 +106,10 @@
 .btn-primary-outline {
   background-color: transparent;
   border-color: #ccc;
+}
+
+.inVisible {
+	display: none;
 }
 
 /*media query when screen is larger than 768px*/
