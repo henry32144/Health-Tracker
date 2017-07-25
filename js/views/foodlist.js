@@ -21,7 +21,6 @@ app.FoodListView = Backbone.View.extend({
 	},
 
 	renderFood: function(item) {
-		console.log(this.collection);
 		var FoodView = new app.FoodView({
 			model: item
 		});
@@ -30,8 +29,6 @@ app.FoodListView = Backbone.View.extend({
 
 	addtoFoodList: function(item) {
 		this.collection.add(item);
-		console.log(item);
-		console.log(this.collection);
 	},
 
 });

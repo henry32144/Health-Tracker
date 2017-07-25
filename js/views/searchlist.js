@@ -2,10 +2,11 @@ var app = app || {};
 
 app.SearchListView = Backbone.View.extend({
 
-	el: '#search-list',
+	el: '.search-area',
 
 
 	initialize: function(results) {
+		_.bindAll(this, "fillUrl");
 		this.collection = new app.SearchList(results);
 		this.render();
 	},
@@ -20,11 +21,26 @@ app.SearchListView = Backbone.View.extend({
 		var SearchView = new app.SearchView({
 			model: item
 		});
-		this.$el.append(SearchView.render().el);
+		this.$el.children("#search-list").append(SearchView.render().el);
 	},
 
 	events:{
-        'click .food-search-item':'addFood'
+        "click .food-search-item": "addFood",
+        "keyup #search-bar": "submitAjax",
+    },
+
+    fillUrl: function(foodName) {
+    	this.url = 'https://api.nutritionix.com/v1_1/search/';
+		this.urlSecPart = '?results=0%3A5&fields=item_name%2Citem_id%2Cbrand_name%2Cnf_calories%2Cnf_total_fat&appId=5801a68a&appKey=c55ded6d8f4a00ff80570dcbb659b1a3';
+		return this.url + foodName + this.urlSecPart;
+    },
+
+    submitAjax: function(e) {
+    	e.preventDefault();
+    	this.userType = $("#search-bar").val();
+    	console.log(this.userType);
+    	console.log(this.fillUrl(this.userType));
+    	
     },
 
     addFood: function(e) {
