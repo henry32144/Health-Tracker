@@ -5,12 +5,4 @@ app.Search = Backbone.Model.extend({
 		result: "name",
 		cal: "(kcal)"
 	},
-		
-	doSearch: function(str) {
-
-	},
-
-	_searchCompelete: function(results) {
-		this.set('result', results);
-	}
 });

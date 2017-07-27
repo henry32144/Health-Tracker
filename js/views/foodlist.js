@@ -24,10 +24,12 @@ app.FoodListView = Backbone.View.extend({
 		var FoodView = new app.FoodView({
 			model: item
 		});
+		app.trigger("plusCal" , item);
 		this.$el.append(FoodView.render().el);
 	},
 
 	addtoFoodList: function(item) {
+		console.log(item);
 		this.collection.add(item);
 	},
 

@@ -10,7 +10,15 @@ $(function() {
 	{result: '寿司' , cal: '123(kcal)'},
 	{result: '唐揚げ' , cal: '123(kcal)'},
 	];
+	
+	$( "#datepicker" ).datepicker({
+    	dateFormat:"yy-mm-dd",
+    });
+    $("#datepicker").datepicker("setDate", new Date());
+
     new app.FoodListView();
     new app.SearchListView(search);
+    new app.FunctionBarView();
+
 
 });

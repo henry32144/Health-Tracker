@@ -11,13 +11,5 @@ app.SearchView = Backbone.View.extend({
 	    this.$el.children().attr("data-id" , this.model.get("result"));
 	    return this;
 	},
-
-	events: {
-	    'click': 'addFood'
-	},
-
-	addFood: function() {
-
-	}
-
+	
 });
