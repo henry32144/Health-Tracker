@@ -16,25 +16,25 @@ app.FunctionBarView = Backbone.View.extend({
 	},
 
 	events:{
-		"click #calender-button": "showDatePicker",
+		"click #save-button": "saveData",
 		"click #chart-button": "showChart",
 		"change #datepicker" : "renderDate", 
 	},
 
-	getCurrentCal: function() {
+	getCurrentDate: function() {
 		this.currentDate = $( "#datepicker" ).val();
 		return this.collection.findWhere({date: this.currentDate});
 	},
 
 	plusCal: function(item) {
-		this.currentCal = this.getCurrentCal();
-		this.newCal = parseInt(this.currentCal.get("totalCal").slice(0,-6)) + parseInt(item.get("calories").slice(0,-6)) + "(kcal)";
+		this.currentCal = this.getCurrentDate();
+		this.newCal = parseInt(this.currentCal.get("totalCal").slice(0,-6)) + parseInt(item.calories.slice(0,-6)) + "(kcal)";
 		this.currentCal.set("totalCal", this.newCal);
 		this.renderCal(this.newCal);
 	},
 
 	minusCal: function(item) {
-		this.currentCal = this.getCurrentCal();
+		this.currentCal = this.getCurrentDate();
 		this.newCal = parseInt(this.currentCal.get("totalCal").slice(0,-6)) - parseInt(item.get("calories").slice(0,-6)) + "(kcal)";
 		this.currentCal.set("totalCal", this.newCal);
 		this.renderCal(this.newCal);
@@ -44,8 +44,14 @@ app.FunctionBarView = Backbone.View.extend({
 		$("#total-cal").html("Total Cal:" + cal);
 	},
 
-	showDatePicker: function() {
-		$( "#datepicker" ).datepicker('show');
+	saveData: function() {
+		this.dateData = this.getCurrentDate();
+		app.trigger("saveFoodList" , this.dateData);
+
+		$("#save-button").popover('toggle')
+		setTimeout(function () {
+		    $('#save-button').popover('hide');
+		}, 500);
 	},
 
 	showChart: function() {
@@ -53,10 +59,12 @@ app.FunctionBarView = Backbone.View.extend({
 	},
 
 	renderDate: function() {
-		this.currentDate = $( "#datepicker" ).val();
-		this.dateData = this.collection.findWhere({date: this.currentDate});
+		this.dateData = this.getCurrentDate();
+		app.trigger("cleanFoodList" , this.dateData);
+
 		if(this.dateData) {
 			console.log('exist');
+			app.trigger("renderDateFood" , this.dateData);
 			this.renderCal(this.dateData.get("totalCal"));
 		}
 		else {
@@ -70,9 +78,6 @@ app.FunctionBarView = Backbone.View.extend({
 		}
 	},
 
-	changeDate: function() {
-		var choosedDate = $( "#datepicker" ).val();
-		console.log(choosedDate);
-	},
+
 
 });

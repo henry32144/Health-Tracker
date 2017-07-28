@@ -56,7 +56,7 @@ app.SearchListView = Backbone.View.extend({
             };
             console.log(resultData);
             this.collection.add(resultData);
-        }, this)
+        }, this);
     },
 
     submitAjax: function(e) {

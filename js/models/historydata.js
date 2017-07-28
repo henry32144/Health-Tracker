@@ -4,5 +4,6 @@ app.HistoryData = Backbone.Model.extend({
 	defaults: {
 		date: "null",
 		totalCal: "(kcal)",
+		foods: [],
 	}
 });

@@ -15,6 +15,7 @@ $(function() {
     	dateFormat:"yy-mm-dd",
     });
     $("#datepicker").datepicker("setDate", new Date());
+    $("#save-button").popover();
 
     new app.FoodListView();
     new app.SearchListView(search);
