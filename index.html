@@ -94,6 +94,22 @@
           </div>
         </div>
     </footer>
+    <div class="modal fade" id="modChart" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">
+              <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+            </button>
+            <h4 class="modal-title" id="exampleModalLabel">Linechart</h4>
+          </div>
+          <div class="modal-body">
+            <canvas id="canvas" width="568" height="300"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <script id="searchTemplate" type="text/template">
         <a href="#" class="list-group-item food-search-item"><%= result %></a>
     </script>
@@ -143,6 +159,7 @@
     <script src="js/views/search.js"></script>
     <script src="js/views/searchlist.js"></script>
     <script src="js/views/functionbar.js"></script>
+    <script src="js/views/chartmodal.js"></script>
     <script src="js/app.js"></script>
 </body>
 </html>

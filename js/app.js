@@ -20,6 +20,6 @@ $(function() {
     new app.FoodListView();
     new app.SearchListView(search);
     new app.FunctionBarView();
-
+    new app.ChartModalView();
 
 });
