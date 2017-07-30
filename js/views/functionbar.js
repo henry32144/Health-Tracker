@@ -124,6 +124,7 @@ app.FunctionBarView = Backbone.View.extend({
 		else {
 			console.log("new");
 			this.newData = {
+				id: this.currentDate,
 				date: this.currentDate,
 				totalCal: "0(kcal)",
 			};
@@ -131,7 +132,4 @@ app.FunctionBarView = Backbone.View.extend({
 			this.renderCal(this.newData.totalCal);
 		}
 	},
-
-
-
 });

@@ -17,7 +17,8 @@ app.FoodListView = Backbone.View.extend({
 		app.on('renderDateFood' , this.renderDateFood);
 		this.render();
 
-		this.listenTo(this.collection, 'add', this.renderFood)
+		this.listenTo(this.collection, 'add', this.renderFood);
+		this.listenTo(this.collection, 'change', this.renderFood);
 	},
 
 	render: function() {
@@ -46,6 +47,7 @@ app.FoodListView = Backbone.View.extend({
 
 	saveFoodList: function(dateData) {
 		this.tempFoodData = [];
+		dateData.unset("foods");
 		this.collection.each(function(item) {
 			this.tempFoodData.push({"foodName": item.get("foodName"), "calories": item.get("calories")});
 		}, this)

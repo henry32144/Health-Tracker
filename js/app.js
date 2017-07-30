@@ -2,7 +2,10 @@ var app = app || {};
 app.foodlist = _.extend(app, Backbone.Events);
 
 $(function() {
-
+	$( "#datepicker" ).datepicker({
+	    dateFormat: "yy-mm-dd",
+	});
+	$("#datepicker").datepicker("setDate", new Date());
 	var search = [
 	{result: 'ラアメン' , cal: '123(kcal)'},
 	{result: '蕎麦麺' , cal: '123(kcal)'},
@@ -11,10 +14,9 @@ $(function() {
 	{result: '唐揚げ' , cal: '123(kcal)'},
 	];
 	
-	$( "#datepicker" ).datepicker({
-    	dateFormat:"yy-mm-dd",
-    });
-    $("#datepicker").datepicker("setDate", new Date());
+	var database = firebase.database();
+	
+	
     $("#save-button").popover();
 
     new app.FoodListView();
