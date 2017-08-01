@@ -47,12 +47,18 @@ app.FoodListView = Backbone.View.extend({
 
 	saveFoodList: function(dateData) {
 		this.tempFoodData = [];
+		console.log(dateData);
+		var database = firebase.database().ref("user/datas/" + dateData.get("date") + "/foods/");
 		dateData.unset("foods");
 		this.collection.each(function(item) {
 			this.tempFoodData.push({"foodName": item.get("foodName"), "calories": item.get("calories")});
 		}, this)
 		console.log(this.tempFoodData);
 		dateData.set("foods" , this.tempFoodData);
+
+		database.set(this.tempFoodData);
+
+
 		console.log(dateData);
 	},
 

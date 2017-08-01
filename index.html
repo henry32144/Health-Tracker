@@ -129,25 +129,26 @@
         </a>
     </script>
     <!--library-->
-    <script src="https://www.gstatic.com/firebasejs/4.1.3/firebase.js"></script>
+
+    <script src="js/libs/jquery-3.2.1.min.js"></script>
+    <script src="js/libs/jquery-ui.min.js"></script>   
+    <script src="js/libs/underscore-1.8.3.min.js"></script>
+    <script src="js/libs/backbone-1.3.3.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.2.0/firebase.js"></script>
     <script>
       // Initialize Firebase
       var config = {
-        apiKey: "AIzaSyAXJfU27s07nFR-PgzxzpzXffBjI_TthcQ",
-        authDomain: "health-tracker-2ca3c.firebaseapp.com",
-        databaseURL: "https://health-tracker-2ca3c.firebaseio.com",
-        projectId: "health-tracker-2ca3c",
-        storageBucket: "health-tracker-2ca3c.appspot.com",
-        messagingSenderId: "707271143217"
-      };
+          apiKey: "AIzaSyAXJfU27s07nFR-PgzxzpzXffBjI_TthcQ",
+          authDomain: "health-tracker-2ca3c.firebaseapp.com",
+          databaseURL: "https://health-tracker-2ca3c.firebaseio.com",
+          projectId: "health-tracker-2ca3c",
+          storageBucket: "health-tracker-2ca3c.appspot.com",
+          messagingSenderId: "707271143217"
+        };
       firebase.initializeApp(config);
     </script>
-    <script src="js/libs/jquery-3.2.1.min.js"></script>
-    <script defer async src="js/libs/jquery-ui.min.js"></script>
-    <script defer async src="js/libs/bootstrap.min.js"></script>
-    <script src="js/libs/underscore-1.8.3.min.js"></script>
-    <script src="js/libs/backbone-1.3.3.min.js"></script>
     <script src="js/libs/backbonefire.js"></script>
+    <script defer async src="js/libs/bootstrap.min.js"></script>
     <script defer async src="js/libs/Chart.min.js"></script>
     <script src="js/models/food.js"></script>
     <script src="js/models/search.js"></script>

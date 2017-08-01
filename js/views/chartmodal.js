@@ -18,7 +18,7 @@ app.ChartModalView = Backbone.View.extend({
 		modal.find('.modal-title').html("Calories in 7 days");
 		var ctx =  $('#canvas', this.$el)[0].getContext("2d");
 		var data = {	    
-			    labels : ["7","6","5","4","3","2","Today"],
+			    labels : ["7","6","5","4","3","2","Choosed"],
 			    datasets: [{
 			    	label: "Yours",
 			        backgroundColor: "rgba(56,191,74,0.2)",

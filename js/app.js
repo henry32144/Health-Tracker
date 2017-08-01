@@ -13,10 +13,9 @@ $(function() {
 	{result: '寿司' , cal: '123(kcal)'},
 	{result: '唐揚げ' , cal: '123(kcal)'},
 	];
-	
-	var database = firebase.database();
-	
-	
+
+	var database = firebase.database().ref("user/datas");
+
     $("#save-button").popover();
 
     new app.FoodListView();
