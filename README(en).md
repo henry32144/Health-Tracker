@@ -1,0 +1,33 @@
+# Health-Tracker Project
+
+This is health tracker app, you can use this to track daily calories, get food data from Nutritionix,
+
+and save your data to Firebase.
+
+## How to use
+
+After download, click index.html to start.
+
+## Attention
+
+* My account is free account in Nutritionix, so it can only search 500 times in one day, and the search function of this app is 
+
+auto compeleted which mean when typing or deleting a word, it will send search request, So it is easy to reach the daily limit,
+
+becareful. 
+
+* This project is for practice, so it wont have registration function, now is using a common database to storge datas.
+
+## Built With
+
+* [Jquery-3.2.1](https://jquery.com/)
+* [Jquery-UI-1.12.1](http://jqueryui.com/)
+* [Backbone-1.3.3](http://backbonejs.org/)
+* [Underscore-1.8.3](http://underscorejs.org/)
+* [Bootstrap-3.3.7](http://getbootstrap.com/)
+* [Chart.js-2.6.0](http://www.chartjs.org/)
+* [Firebase-4.2.0](https://firebase.google.com/)
+
+## Author
+
+* **Henry Wu** [Hello :)](https://github.com/henry32144)
