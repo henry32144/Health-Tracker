@@ -8,6 +8,10 @@ and save your data to Firebase.
 
 After download, click index.html to start.
 
+There are Save button and show Chart button. If you want to save data to database, must click the save button.
+
+Chart button will show 7 days data from the choosed date to 7 days before.  
+
 ## Attention
 
 * My account is free account in Nutritionix, so it can only search 500 times in one day, and the search function of this app is 
