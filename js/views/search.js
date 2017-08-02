@@ -1,5 +1,6 @@
 var app = app || {};
 
+//This view hold single search result
 app.SearchView = Backbone.View.extend({
 	tagName: 'div',
 	className: 'searchContainer',

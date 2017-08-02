@@ -1,5 +1,6 @@
 var app = app || {};
 
+//This view is hold single foodlist item
 app.FoodView = Backbone.View.extend({
 	tagName: 'div',
 	className: 'foodContainer',
@@ -14,6 +15,7 @@ app.FoodView = Backbone.View.extend({
 	    'click .delete-button': 'deleteFood'
 	},
 
+//This delete function trigger minus event to recalcuate Calories  
 	deleteFood: function() {
 		app.trigger("minusCal" , this.model);
 		this.model.collection.remove(this.model);

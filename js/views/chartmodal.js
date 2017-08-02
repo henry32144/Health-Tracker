@@ -4,14 +4,16 @@ app.ChartModalView = Backbone.View.extend({
 
 	el: '#modChart',
 
-
+//Bind and listen to open and close events
 	initialize: function() {
 		_.bindAll(this, "render");
 		app.on("shown.bs.modal" , this.render);
 		app.on("hidden.bs.modal" , this.hidden);
 	},
 
+//render Modal and show data from foodlist
 	render: function(history) {
+		//reverse data array
 		this.historyData = history.reverse();
 		var modal = this.$el;
 		var canvas = modal.find('.modal-body canvas');
@@ -52,10 +54,10 @@ app.ChartModalView = Backbone.View.extend({
 			type: 'line',
 			data: data,
 			responsive: true,
-
 		});
 	},
 
+//Close Modal
 	hidden: function() {
 		var modal = $(this);
 		var canvas = modal.find('.modal-body canvas');

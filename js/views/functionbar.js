@@ -1,15 +1,18 @@
 var app = app || {};
 
+//This view handle function bar and Firebase part
 app.FunctionBarView = Backbone.View.extend({
 
 	el: '#function-bar',
 
+//Bind this and events
 	initialize: function() {
 		_.bindAll(this, "plusCal");
 		_.bindAll(this, "minusCal");
 		_.bindAll(this, "showChart");
 		_.bindAll(this, "writeData");
 		this.collection = new app.HistoryDatas();
+		//Fetch data from firebase
 		this.fetchData();
 		app.on('plusCal' , this.plusCal);
 		app.on('minusCal' , this.minusCal);
@@ -22,11 +25,13 @@ app.FunctionBarView = Backbone.View.extend({
 		"change #datepicker" : "renderDate", 
 	},
 
+//Get currentdate and return the model
 	getCurrentDate: function() {
 		this.currentDate = $( "#datepicker" ).val();
 		return this.collection.findWhere({date: this.currentDate});
 	},
 
+//This function is called when foodlist change
 	plusCal: function(item) {
 		this.currentCal = this.getCurrentDate();
 		this.newCal = parseInt(this.currentCal.get("totalCal").slice(0,-6)) + parseInt(item.calories.slice(0,-6)) + "(kcal)";
@@ -34,6 +39,7 @@ app.FunctionBarView = Backbone.View.extend({
 		this.renderCal(this.newCal);
 	},
 
+//This function is called when foodlist change
 	minusCal: function(item) {
 		this.currentCal = this.getCurrentDate();
 		this.newCal = parseInt(this.currentCal.get("totalCal").slice(0,-6)) - parseInt(item.get("calories").slice(0,-6)) + "(kcal)";
@@ -41,23 +47,30 @@ app.FunctionBarView = Backbone.View.extend({
 		this.renderCal(this.newCal);
 	},
 
+//Render calories
 	renderCal: function(cal) {
 		$("#total-cal").html("Total Cal:" + cal);
 	},
 
+//Save current data
 	saveData: function() {
 		this.dateData = this.getCurrentDate();
+		//Trigger event in foodlist.js to save foodlist
 		app.trigger("saveFoodList" , this.dateData);
+		//Save current cal
 		firebase.database().ref("user/datas/" + this.dateData.get("date")).update({"totalCal": this.dateData.get("totalCal")})
+		//Bootstrap function
 		$("#save-button").popover('toggle')
 		setTimeout(function () {
 		    $('#save-button').popover('hide');
 		}, 500);
 	},
 
+//Show 7days data
 	showChart: function() {
 		this.dateData = this.getCurrentDate();
 		this.calDatas = [];
+		//Calculate days and save cal to calDatas
 		if(this.dateData) {
 			this.day = this.dateData.get("date").slice(-2);
 			this.month = this.dateData.get("date").slice(5,7);
@@ -104,13 +117,17 @@ app.FunctionBarView = Backbone.View.extend({
 			}
 		}
 
+		//Trigger modal event and pass calories datas
 		$("#modChart").modal("show");
 		app.trigger("shown.bs.modal" , this.calDatas);
 	},
 
+//Get day calories by pass in argument
+// day format Ex:2017-08-01
 	getDateData: function(day) {
 		this.dateData = this.collection.findWhere({date: day});
 		if(this.dateData) {
+			//Slice calories string from xxx(kcal) to xxx
 			return this.dateData.get("totalCal").slice(0,-6);
 		}
 		else {
@@ -118,30 +135,29 @@ app.FunctionBarView = Backbone.View.extend({
 		}
 	},
 
-
+//Render date data 
 	renderDate: function() {
 		this.dateData = this.getCurrentDate();
 		app.trigger("cleanFoodList" , this.dateData);
 
+		//Check if data is exist or not
 		if(this.dateData) {
-			console.log('exist');
 			app.trigger("renderDateFood" , this.dateData);
 			this.renderCal(this.dateData.get("totalCal"));
 		}
+		//If not create new data
 		else {
-			console.log("new");
 			this.newData = {
 				date: this.currentDate,
 				totalCal: "0(kcal)",
 			};
-			console.log(this.newData);
 			this.newToDatabase(this.newData);
 			this.collection.add(this.newData);
-			console.log(this.collection);
 			this.renderCal(this.newData.totalCal);
 		}
 	},
 
+//Fetch data from firebase
 	fetchData: function() {
 		var database = firebase.database().ref("user/datas");
 		var self = this;
@@ -153,25 +169,21 @@ app.FunctionBarView = Backbone.View.extend({
 		}, function(error) {
 		   alert(error);
 		});
-
-		console.log(p);
-
 	},
 
+//Write data to collection
 	writeData: function(data) {
-		console.log(data);
 		if(data) {
 			for(var item in data) {
 				this.collection.add(data[item],{silent: true});
 			}
-			console.log(this.collection);
 		}
 		this.renderDate();
 	},
 
+//This function called if database has no current date data
 	newToDatabase: function(data) {
 		var database = firebase.database().ref("user/datas/" + data.date);
-
 		database.set(data);
 	},
 

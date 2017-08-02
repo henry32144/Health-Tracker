@@ -1,10 +1,11 @@
 var app = app || {};
 
+//This view handle whole search list
 app.SearchListView = Backbone.View.extend({
 
 	el: '.search-area',
 
-
+//Bind this and event
 	initialize: function(results) {
 		_.bindAll(this, "fillUrl");
         _.bindAll(this, "submitAjax");
@@ -16,12 +17,14 @@ app.SearchListView = Backbone.View.extend({
         this.listenTo(this.collection, 'reset', this.clearResult);
 	},
 
+//Render search list
 	render: function() {
 		this.collection.each(function(item) {
 			this.renderResult(item);
 		}, this)
 	},
 
+//Append to html
 	renderResult: function(item) {
 		var SearchView = new app.SearchView({
 			model: item
@@ -29,6 +32,7 @@ app.SearchListView = Backbone.View.extend({
 		this.$el.children("#search-list").append(SearchView.render().el);
 	},
 
+//Clear all result before search
     clearResult: function() {
         this.$el.children("#search-list").empty();
     },
@@ -40,37 +44,37 @@ app.SearchListView = Backbone.View.extend({
         "blur #search-bar": "hideResult",
     },
 
+//Fill ajax url
     fillUrl: function(foodName) {
     	this.url = 'https://api.nutritionix.com/v1_1/search/';
 		this.urlSecPart = '?results=0%3A10&fields=item_name%2Citem_id%2Cbrand_name%2Cnf_calories%2Cnf_total_fat&appId=5801a68a&appKey=c55ded6d8f4a00ff80570dcbb659b1a3';
 		return this.url + foodName + this.urlSecPart;
     },
 
+//Parse data and add to result list
     parseData: function(Data) {
-        console.log(Data);
         this.collection.reset();
         Data.hits.forEach(function(item) {
             resultData = {
                 result: item.fields.item_name,
                 cal: item.fields.nf_calories + "(kcal)"
             };
-            console.log(resultData);
             this.collection.add(resultData);
         }, this);
     },
 
+//Do ajax
     submitAjax: function(e) {
     	e.preventDefault();
+        //get user type in auto compelete
     	this.userType = $("#search-bar").val();
-    	console.log(this.userType);
-    	console.log(this.fillUrl(this.userType));
+        //fill url
     	this.ajaxUrl = this.fillUrl(this.userType);
         var ajaxResult;
         var self = this;
 
     	$.getJSON(this.ajaxUrl , function(data){
     	    ajaxResult = data;
-            console.log(ajaxResult);
             self.parseData(ajaxResult);
     	}).fail(function(e){
             //prevent alert too many times
@@ -79,14 +83,13 @@ app.SearchListView = Backbone.View.extend({
     	       alert('failed to get food data');
             }
     	});
-
-
     },
 
+//add food to foodlist when clicked search result
     addFood: function(e) {
         e.preventDefault();
 
-        
+        //get clicked result data
         this.foodid = $(e.currentTarget).data("id");
         this.foodName = e.currentTarget.innerHTML;
         this.cal = this.collection.findWhere({result: this.foodid}).get("cal");
@@ -96,15 +99,19 @@ app.SearchListView = Backbone.View.extend({
         	calories: this.cal
         };
 
+        //trigger event and pass food data
         app.trigger("clickedResult" , this.foodData);
 
+        //hide search list
         this.$el.children("#search-list").addClass("inVisible");
 	},
 
+//This function is to show search list
     showResult: function(e) {
         this.$el.children("#search-list").removeClass("inVisible");
     },
 
+//This function is to hide search list
     hideResult: function(e) {
         var self = this;
         setTimeout(function() {

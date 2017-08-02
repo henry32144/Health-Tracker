@@ -11,6 +11,10 @@
 	color: #eee;
 }
 
+.site-header .navbar-nav a:hover {
+	color: #000;
+}
+
 .site-header .navbar-header span {
 	background-color: #fff;
 }
