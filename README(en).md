@@ -4,6 +4,10 @@ This is health tracker app, you can use this to track daily calories, get food d
 
 and save your data to Firebase.
 
+## DEMO
+
+https://henry32144.github.io/Health-Tracker/
+
 ## How to use
 
 After download, click index.html to start.

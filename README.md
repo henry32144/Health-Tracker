@@ -2,6 +2,10 @@
 
 這是一個健康紀錄應用，可以記錄每日吃的熱量，從Nutritionix取得資料，並且儲存到Firebase
 
+## DEMO
+
+https://henry32144.github.io/Health-Tracker/
+
 ## How to use
 
 下載後，點擊index.html
