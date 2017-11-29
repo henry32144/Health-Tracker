@@ -18,9 +18,7 @@ Chart button will show 7 days data from the choosed date to 7 days before.
 
 ## Attention
 
-* My account is free account in Nutritionix, so it can only search 500 times in one day, and the search function of this app is 
-
-auto compeleted which mean when typing or deleting a word, it will send search request, So it is easy to reach the daily limit,
+* My account is free account in Nutritionix, so it can only search 500 times in one day, so it's possible that this app would be restricted by Nutritionix because of the usage is over.
 
 becareful. 
 
