@@ -39,16 +39,19 @@ app.SearchListView = Backbone.View.extend({
 
 	events:{
         "click .food-search-item": "addFood",
-        "keyup #search-bar": "submitAjax",
+        "keyup #search-bar": "setTimeDelay",
         "focus #search-bar": "showResult",
         "blur #search-bar": "hideResult",
     },
 
 //Fill ajax url
     fillUrl: function(foodName) {
-    	this.url = 'https://api.nutritionix.com/v1_1/search/';
-		this.urlSecPart = '?results=0%3A10&fields=item_name%2Citem_id%2Cbrand_name%2Cnf_calories%2Cnf_total_fat&appId=5801a68a&appKey=c55ded6d8f4a00ff80570dcbb659b1a3';
-		return this.url + foodName + this.urlSecPart;
+        if(foodName) {
+        	this.url = 'https://api.nutritionix.com/v1_1/search/';
+    		this.urlSecPart = '?results=0%3A10&fields=item_name%2Citem_id%2Cbrand_name%2Cnf_calories%2Cnf_total_fat&appId=5801a68a&appKey=c55ded6d8f4a00ff80570dcbb659b1a3';
+    		return this.url + foodName + this.urlSecPart;
+        }
+        else return false;
     },
 
 //Parse data and add to result list
@@ -63,26 +66,38 @@ app.SearchListView = Backbone.View.extend({
         }, this);
     },
 
+//To set a delaytime to prevent to sumbit many ajaxs
+    setTimeDelay: function(e) {
+        var $this = $(this);
+        var that = this;
+        clearTimeout($this.data('timeout'));
+            
+        $this.data('timeout', setTimeout(function(){
+            that.submitAjax($('#search-bar').val());
+        }, 350));
+    },
+    
 //Do ajax
-    submitAjax: function(e) {
-    	e.preventDefault();
+    submitAjax: function(userType) {
         //get user type in auto compelete
-    	this.userType = $("#search-bar").val();
+    	this.userType = userType;
         //fill url
     	this.ajaxUrl = this.fillUrl(this.userType);
-        var ajaxResult;
-        var self = this;
+        if(this.ajaxUrl != false) {
+            var ajaxResult;
+            var self = this;
 
-    	$.getJSON(this.ajaxUrl , function(data){
-    	    ajaxResult = data;
-            self.parseData(ajaxResult);
-    	}).fail(function(e){
-            //prevent alert too many times
-            if(ajaxResult != false) {
-                ajaxResult = false;
-    	       alert('failed to get food data');
-            }
-    	});
+        	$.getJSON(this.ajaxUrl , function(data){
+        	    ajaxResult = data;
+                self.parseData(ajaxResult);
+        	}).fail(function(e){
+                //prevent alert too many times
+                if(ajaxResult != false) {
+                    ajaxResult = false;
+        	       alert('failed to get food data');
+                }
+        	});
+        }
     },
 
 //add food to foodlist when clicked search result

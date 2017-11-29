@@ -33,10 +33,12 @@ app.FunctionBarView = Backbone.View.extend({
 
 //This function is called when foodlist change
 	plusCal: function(item) {
-		this.currentCal = this.getCurrentDate();
-		this.newCal = parseInt(this.currentCal.get("totalCal").slice(0,-6)) + parseInt(item.calories.slice(0,-6)) + "(kcal)";
-		this.currentCal.set("totalCal", this.newCal);
-		this.renderCal(this.newCal);
+		if(this.getCurrentDate()) {
+			this.currentCal = this.getCurrentDate();
+			this.newCal = parseInt(this.currentCal.get("totalCal").slice(0,-6)) + parseInt(item.calories.slice(0,-6)) + "(kcal)";
+			this.currentCal.set("totalCal", this.newCal);
+			this.renderCal(this.newCal);
+		} else alert('please set a date time first')
 	},
 
 //This function is called when foodlist change

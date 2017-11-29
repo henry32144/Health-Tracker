@@ -6,37 +6,15 @@
         <title>Contact</title>
         <meta name="description" content="test">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/jquery-ui.min.css" rel="stylesheet">
+        <link href="css/style.css" rel="stylesheet">
         <style>
-
-            * {
-                line-height: 1.2;
-                margin: 0;
-            }
-
-            html {
-                color: #888;
-                display: table;
+            #message {
                 font-family: sans-serif;
-                height: 100%;
                 text-align: center;
-                width: 100%;
-            }
-
-            body {
-                display: table-cell;
-                vertical-align: middle;
-                margin: 2em auto;
-            }
-
-            h1 {
-                color: #555;
-                font-size: 2em;
-                font-weight: 400;
-            }
-
-            p {
                 margin: 0 auto;
-                width: 280px;
+                font-size: 1.5em;
             }
             @media only screen and (max-width: 280px) {
                 body, p {
@@ -52,6 +30,60 @@
         </style>
     </head>
     <body>
-        <p>Hello This is contact page , I can give you my sister's phone number if you want</p>
-    </body>
+<body>
+    <!-- Navigation -->
+    <header class="site-header">
+      <nav class="navbar navbar-static-top" role="navigation">
+          <div class="container">
+              <!-- Brand and toggle get grouped for better mobile display -->
+              <div class="navbar-header">
+                  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-navbar-collapse">
+                      <span class="sr-only">Toggle navigation</span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                  </button>
+                  <a class="navbar-brand" href="#">Health Tracker</a>
+              </div>
+              <!-- Collect the nav links, forms, and other content for toggling -->
+              <div class="collapse navbar-collapse" id="bs-navbar-collapse">
+                  <ul class="nav navbar-nav">
+                      <li>
+                          <a target="_blank" href="about.html">About</a>
+                      </li>
+                      <li>
+                          <a target="_blank" href="service.html">Services</a>
+                      </li>
+                      <li>
+                          <a target="_blank" href="contact.html">Contact</a>
+                      </li>
+                  </ul>
+              </div>
+              <!-- /.navbar-collapse -->
+          </div>
+          <!-- /.container -->
+          <div class="container jumbotron">
+            <div class ="row">
+              <div class="col-xs-12">
+                <h1>Health Tracker</h1>
+                <p>Use this to track your calories!</p>
+              </div>
+            </div>
+          </div>
+      </nav>
+    </header>
+    <p id='message'>Hello, This is contact page , I can give you my sister's phone number if you want</p>
+    <footer class="footer">
+      <nav class="navbar navbar-fixed-bottom" role="navigation">
+        <div class="container">
+          <div class="row">
+          </div>
+        </div>
+    </footer>
+    <!--library-->
+    <script src="js/libs/jquery-3.2.1.min.js"></script>
+    <script src="js/libs/jquery-ui.min.js"></script>   
+    <script defer async src="js/libs/bootstrap.min.js"></script>
+</body>
+</html>
 </html>
