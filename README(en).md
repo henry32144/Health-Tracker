@@ -10,17 +10,15 @@ https://henry32144.github.io/Health-Tracker/
 
 ## How to use
 
-After download, click index.html to start.
+* After download, click index.html to start.
 
-There are Save button and show Chart button. If you want to save data to database, must click the save button.
+* There are Save button and show Chart button. If you want to save the data to database, please click the save button.
 
-Chart button will show 7 days data from the choosed date to 7 days before.  
+* Chart button will show 7 days data from the choosed date to 7 days before.  
 
 ## Attention
 
 * My account is free account in Nutritionix, so it can only search 500 times in one day, so it's possible that this app would be restricted by Nutritionix because of the usage is over.
-
-becareful. 
 
 * This project is for practice, so it wont have registration function, now is using a common database to storge datas.
 
