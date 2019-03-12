@@ -1,12 +1,12 @@
 # Health-Tracker Project 
 
-[English Version](https://github.com/henry32144/Health-Tracker/blob/master/README(en).md)
+[English Version](https://github.com/henry32144/health-tracker/blob/master/README(en).md)
 
 這是一個健康紀錄應用，可以記錄每日吃的熱量，從Nutritionix取得資料，並且儲存到Firebase
 
 ## DEMO
 
-https://henry32144.github.io/Health-Tracker/
+https://henry32144.github.io/health-tracker/
 
 ## How to use
 
