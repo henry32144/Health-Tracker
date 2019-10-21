@@ -6,6 +6,8 @@
 
 ## DEMO
 
+![Screenshot](screenshot.jpg)
+
 https://henry32144.github.io/health-tracker/
 
 ## How to use

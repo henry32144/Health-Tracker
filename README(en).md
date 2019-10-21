@@ -6,6 +6,8 @@ and save your data to Firebase.
 
 ## DEMO
 
+![Screenshot](screenshot.jpg)
+
 https://henry32144.github.io/Health-Tracker/
 
 ## How to use
