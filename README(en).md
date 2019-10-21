@@ -4,6 +4,8 @@ This is health tracker app, you can use this to track daily calories, get food d
 
 and save your data to Firebase.
 
+**Firebase API key has been expired, so this cannot save data now.**
+
 ## DEMO
 
 ![Screenshot](screenshot.jpg)
@@ -14,15 +16,13 @@ https://henry32144.github.io/Health-Tracker/
 
 * After download, click index.html to start.
 
-* There are Save button and show Chart button. If you want to save the data to database, please click the save button.
+* There are Save button and show Chart button. Since the Firebase API key has been expired, so it cannot save data now.
 
 * Chart button will show 7 days data from the choosed date to 7 days before.  
 
 ## Attention
 
-* My account is free account in Nutritionix, so it can only search 500 times in one day, so it's possible that this app would be restricted by Nutritionix because of the usage is over.
-
-* This project is for practice, so it wont have registration function, now is using a common database to storge datas.
+* My account is a free account of Nutritionix, so it can only search 500 times in one day, so it's possible that this website would be restricted by Nutritionix because the usage is over the limit.
 
 ## Built With
 
